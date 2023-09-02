@@ -1,0 +1,290 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "startTimestamp",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxClaimableSupply",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "supplyClaimed",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "quantityLimitPerWallet",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "merkleRoot",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "uint256",
+								"name": "pricePerToken",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "currency",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "metadata",
+								"type": "string"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct IClaimCondition.ClaimCondition",
+						"name": "condition",
+						"type": "tuple"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "resetEligibility",
+						"type": "bool"
+					}
+				],
+				"name": "ClaimConditionUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "claimer",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "startTokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "quantityClaimed",
+						"type": "uint256"
+					}
+				],
+				"name": "TokensClaimed",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "quantity",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "currency",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pricePerToken",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "bytes32[]",
+								"name": "proof",
+								"type": "bytes32[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "quantityLimitPerWallet",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "pricePerToken",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "currency",
+								"type": "address"
+							}
+						],
+						"internalType": "struct IDropSinglePhase.AllowlistProof",
+						"name": "allowlistProof",
+						"type": "tuple"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "claim",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "startTimestamp",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxClaimableSupply",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "supplyClaimed",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "quantityLimitPerWallet",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "merkleRoot",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "uint256",
+								"name": "pricePerToken",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "currency",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "metadata",
+								"type": "string"
+							}
+						],
+						"internalType": "struct IClaimCondition.ClaimCondition",
+						"name": "phase",
+						"type": "tuple"
+					},
+					{
+						"internalType": "bool",
+						"name": "resetClaimEligibility",
+						"type": "bool"
+					}
+				],
+				"name": "setClaimConditions",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"claim(address,uint256,address,uint256,(bytes32[],uint256,uint256,address),bytes)": {
+					"params": {
+						"allowlistProof": "The proof of the claimer's inclusion in the merkle root allowlist                                        of the claim conditions that apply.",
+						"currency": "The currency in which to pay for the claim.",
+						"data": "Arbitrary bytes data that can be leveraged in the implementation of this interface.",
+						"pricePerToken": "The price per token to pay for the claim.",
+						"quantity": "The quantity of NFTs to claim.",
+						"receiver": "The receiver of the NFTs to claim."
+					}
+				},
+				"setClaimConditions((uint256,uint256,uint256,uint256,bytes32,uint256,address,string),bool)": {
+					"params": {
+						"phase": "Claim condition to set.",
+						"resetClaimEligibility": "Whether to honor the restrictions applied to wallets who have claimed tokens in the current conditions,                                  in the new claim conditions being set."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"ClaimConditionUpdated((uint256,uint256,uint256,uint256,bytes32,uint256,address,string),bool)": {
+					"notice": "Emitted when the contract's claim conditions are updated."
+				},
+				"TokensClaimed(address,address,uint256,uint256)": {
+					"notice": "Emitted when tokens are claimed via `claim`."
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"claim(address,uint256,address,uint256,(bytes32[],uint256,uint256,address),bytes)": {
+					"notice": "Lets an account claim a given quantity of NFTs."
+				},
+				"setClaimConditions((uint256,uint256,uint256,uint256,bytes32,uint256,address,string),bool)": {
+					"notice": "Lets a contract admin (account with `DEFAULT_ADMIN_ROLE`) set claim conditions."
+				}
+			},
+			"notice": "The interface `IDropSinglePhase` is written for thirdweb's 'DropSinglePhase' contracts, which are distribution mechanisms for tokens.  An authorized wallet can set a claim condition for the distribution of the contract's tokens.  A claim condition defines criteria under which accounts can mint tokens. Claim conditions can be overwritten  or added to by the contract admin. At any moment, there is only one active claim condition.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"AVN/NFT.sol": "IDropSinglePhase"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"AVN/NFT.sol": {
+			"keccak256": "0x9492fb076d7d7ef04b629b0a9a9cfe2b062aade89f1c8dc46d8590be4df24a8c",
+			"urls": [
+				"bzz-raw://ea55de353a45a1619f476eb61174364add5b39404b6f03c9525071ca760d8c77",
+				"dweb:/ipfs/QmaJgoH6bqhEJRdTEfY7ximRCSnZQtn8eySwhFPdVDQAV8"
+			]
+		}
+	},
+	"version": 1
+}

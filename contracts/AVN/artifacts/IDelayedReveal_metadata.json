@@ -1,0 +1,138 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "revealedURI",
+						"type": "string"
+					}
+				],
+				"name": "TokenURIRevealed",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "key",
+						"type": "bytes"
+					}
+				],
+				"name": "encryptDecrypt",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "result",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "identifier",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "key",
+						"type": "bytes"
+					}
+				],
+				"name": "reveal",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "revealedURI",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"TokenURIRevealed(uint256,string)": {
+					"details": "Emitted when tokens are revealed."
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"encryptDecrypt(bytes,bytes)": {
+					"params": {
+						"data": "The data to encrypt. In the case of delayed-reveal NFTs, this is the \"revealed\" state              base URI of the relevant batch of NFTs.",
+						"key": "The key with which to encrypt data"
+					}
+				},
+				"reveal(uint256,bytes)": {
+					"params": {
+						"identifier": "The ID for the batch of delayed-reveal NFTs to reveal.",
+						"key": "The key with which the base URI for the relevant batch of NFTs was encrypted."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"encryptDecrypt(bytes,bytes)": {
+					"notice": "Performs XOR encryption/decryption."
+				},
+				"reveal(uint256,bytes)": {
+					"notice": "Reveals a batch of delayed reveal NFTs."
+				}
+			},
+			"notice": "Thirdweb's `DelayedReveal` is a contract extension for base NFT contracts. It lets you create batches of  'delayed-reveal' NFTs. You can learn more about the usage of delayed reveal NFTs here - https://blog.thirdweb.com/delayed-reveal-nfts",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"AVN/NFT.sol": "IDelayedReveal"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"AVN/NFT.sol": {
+			"keccak256": "0x9492fb076d7d7ef04b629b0a9a9cfe2b062aade89f1c8dc46d8590be4df24a8c",
+			"urls": [
+				"bzz-raw://ea55de353a45a1619f476eb61174364add5b39404b6f03c9525071ca760d8c77",
+				"dweb:/ipfs/QmaJgoH6bqhEJRdTEfY7ximRCSnZQtn8eySwhFPdVDQAV8"
+			]
+		}
+	},
+	"version": 1
+}

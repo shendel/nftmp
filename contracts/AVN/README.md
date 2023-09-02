@@ -1,0 +1,3 @@
+Test compatibility:
+Testnet address: 0x06d8C9C4c335E743dF72dD03148449126a705d4d
+With mint: 0x06a5f633250499b7D7E98FB962fa9253679219bD

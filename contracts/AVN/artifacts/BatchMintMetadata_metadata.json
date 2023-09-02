@@ -1,0 +1,104 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getBaseURICount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "getBatchIdAtIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"getBaseURICount()": {
+					"details": "Each batch of tokens has an in ID and an associated `baseURI`.                  See {batchIds}."
+				},
+				"getBatchIdAtIndex(uint256)": {
+					"details": "See {getBaseURICount}.",
+					"params": {
+						"_index": "ID of a token."
+					}
+				}
+			},
+			"stateVariables": {
+				"baseURI": {
+					"details": "Mapping from id of a batch of tokens => to base URI for the respective batch of tokens."
+				},
+				"batchIds": {
+					"details": "Largest tokenId of each batch of tokens with the same baseURI."
+				}
+			},
+			"title": "Batch-mint Metadata",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getBaseURICount()": {
+					"notice": "Returns the count of batches of NFTs."
+				},
+				"getBatchIdAtIndex(uint256)": {
+					"notice": "Returns the ID for the batch of tokens the given tokenId belongs to."
+				}
+			},
+			"notice": "The `BatchMintMetadata` is a contract extension for any base NFT contract. It lets the smart contract           using this extension set metadata for `n` number of NFTs all at once. This is enabled by storing a single           base URI for a batch of `n` NFTs, where the metadata for each NFT in a relevant batch is `baseURI/tokenId`.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"AVN/NFT.sol": "BatchMintMetadata"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"AVN/NFT.sol": {
+			"keccak256": "0x9492fb076d7d7ef04b629b0a9a9cfe2b062aade89f1c8dc46d8590be4df24a8c",
+			"urls": [
+				"bzz-raw://ea55de353a45a1619f476eb61174364add5b39404b6f03c9525071ca760d8c77",
+				"dweb:/ipfs/QmaJgoH6bqhEJRdTEfY7ximRCSnZQtn8eySwhFPdVDQAV8"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,285 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newRoyaltyRecipient",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newRoyaltyBps",
+						"type": "uint256"
+					}
+				],
+				"name": "DefaultRoyalty",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "royaltyRecipient",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "royaltyBps",
+						"type": "uint256"
+					}
+				],
+				"name": "RoyaltyForToken",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "getDefaultRoyaltyInfo",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint16",
+						"name": "",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getRoyaltyInfoForToken",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint16",
+						"name": "",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "salePrice",
+						"type": "uint256"
+					}
+				],
+				"name": "royaltyInfo",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "royaltyAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_royaltyRecipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_royaltyBps",
+						"type": "uint256"
+					}
+				],
+				"name": "setDefaultRoyaltyInfo",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_bps",
+						"type": "uint256"
+					}
+				],
+				"name": "setRoyaltyInfoForToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "interfaceId",
+						"type": "bytes4"
+					}
+				],
+				"name": "supportsInterface",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "The `Royalty` contract is ERC2981 compliant.",
+			"kind": "dev",
+			"methods": {
+				"getRoyaltyInfoForToken(uint256)": {
+					"details": "Returns royalty recipient and bps for `_tokenId`.",
+					"params": {
+						"_tokenId": "The tokenID of the NFT for which to query royalty info."
+					}
+				},
+				"royaltyInfo(uint256,uint256)": {
+					"details": "Returns royalty amount and recipient for `tokenId` and `salePrice`.",
+					"params": {
+						"salePrice": "Sale price of the token.",
+						"tokenId": "The tokenID of the NFT for which to query royalty info."
+					},
+					"returns": {
+						"receiver": "       Address of royalty recipient account.",
+						"royaltyAmount": "  Royalty amount calculated at current royaltyBps value."
+					}
+				},
+				"setDefaultRoyaltyInfo(address,uint256)": {
+					"details": "Caller should be authorized to set royalty info.                  See {_canSetRoyaltyInfo}.                  Emits {DefaultRoyalty Event}; See {_setupDefaultRoyaltyInfo}.",
+					"params": {
+						"_royaltyBps": "Updated royalty bps.",
+						"_royaltyRecipient": "Address to be set as default royalty recipient."
+					}
+				},
+				"setRoyaltyInfoForToken(uint256,address,uint256)": {
+					"details": "Sets royalty info for `_tokenId`. Caller should be authorized to set royalty info.                  See {_canSetRoyaltyInfo}.                  Emits {RoyaltyForToken Event}; See {_setupRoyaltyInfoForToken}.",
+					"params": {
+						"_bps": "Updated royalty bps for the token Id.",
+						"_recipient": "Address to be set as royalty recipient for given token Id."
+					}
+				},
+				"supportsInterface(bytes4)": {
+					"details": "Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding [EIP section](https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified) to learn more about how these ids are created. This function call must use less than 30 000 gas."
+				}
+			},
+			"stateVariables": {
+				"royaltyBps": {
+					"details": "The (default) % of a sale to take as royalty (in basis points)."
+				},
+				"royaltyInfoForToken": {
+					"details": "Token ID => royalty recipient and bps for token"
+				},
+				"royaltyRecipient": {
+					"details": "The (default) address that receives all royalty value."
+				}
+			},
+			"title": "Royalty",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getDefaultRoyaltyInfo()": {
+					"notice": "Returns the defualt royalty recipient and BPS for this contract's NFTs."
+				},
+				"getRoyaltyInfoForToken(uint256)": {
+					"notice": "View royalty info for a given token."
+				},
+				"royaltyInfo(uint256,uint256)": {
+					"notice": "View royalty info for a given token and sale price."
+				},
+				"setDefaultRoyaltyInfo(address,uint256)": {
+					"notice": "Updates default royalty recipient and bps."
+				},
+				"setRoyaltyInfoForToken(uint256,address,uint256)": {
+					"notice": "Updates default royalty recipient and bps for a particular token."
+				}
+			},
+			"notice": "Thirdweb's `Royalty` is a contract extension to be used with any base contract. It exposes functions for setting and reading           the recipient of royalty fee and the royalty fee basis points, and lets the inheriting contract perform conditional logic           that uses information about royalty fees, if desired.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"AVN/NFT.sol": "Royalty"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"AVN/NFT.sol": {
+			"keccak256": "0x9492fb076d7d7ef04b629b0a9a9cfe2b062aade89f1c8dc46d8590be4df24a8c",
+			"urls": [
+				"bzz-raw://ea55de353a45a1619f476eb61174364add5b39404b6f03c9525071ca760d8c77",
+				"dweb:/ipfs/QmaJgoH6bqhEJRdTEfY7ximRCSnZQtn8eySwhFPdVDQAV8"
+			]
+		}
+	},
+	"version": 1
+}

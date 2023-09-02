@@ -1,0 +1,168 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "startTokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "endTokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "baseURI",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "encryptedBaseURI",
+						"type": "bytes"
+					}
+				],
+				"name": "TokensLazyMinted",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "getBaseURICount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "getBatchIdAtIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_baseURIForTokens",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_data",
+						"type": "bytes"
+					}
+				],
+				"name": "lazyMint",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "batchId",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"getBaseURICount()": {
+					"details": "Each batch of tokens has an in ID and an associated `baseURI`.                  See {batchIds}."
+				},
+				"getBatchIdAtIndex(uint256)": {
+					"details": "See {getBaseURICount}.",
+					"params": {
+						"_index": "ID of a token."
+					}
+				},
+				"lazyMint(uint256,string,bytes)": {
+					"params": {
+						"_amount": "The number of NFTs to lazy mint.",
+						"_baseURIForTokens": "The base URI for the 'n' number of NFTs being lazy minted, where the metadata for each                           of those NFTs is `${baseURIForTokens}/${tokenId}`.",
+						"_data": "Additional bytes data to be used at the discretion of the consumer of the contract."
+					},
+					"returns": {
+						"batchId": "         A unique integer identifier for the batch of NFTs lazy minted together."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getBaseURICount()": {
+					"notice": "Returns the count of batches of NFTs."
+				},
+				"getBatchIdAtIndex(uint256)": {
+					"notice": "Returns the ID for the batch of tokens the given tokenId belongs to."
+				},
+				"lazyMint(uint256,string,bytes)": {
+					"notice": "Lets an authorized address lazy mint a given amount of NFTs."
+				}
+			},
+			"notice": "The `LazyMint` is a contract extension for any base NFT contract. It lets you 'lazy mint' any number of NFTs  at once. Here, 'lazy mint' means defining the metadata for particular tokenIds of your NFT contract, without actually  minting a non-zero balance of NFTs of those tokenIds.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"AVN/NFT.sol": "LazyMint"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"AVN/NFT.sol": {
+			"keccak256": "0x9492fb076d7d7ef04b629b0a9a9cfe2b062aade89f1c8dc46d8590be4df24a8c",
+			"urls": [
+				"bzz-raw://ea55de353a45a1619f476eb61174364add5b39404b6f03c9525071ca760d8c77",
+				"dweb:/ipfs/QmaJgoH6bqhEJRdTEfY7ximRCSnZQtn8eySwhFPdVDQAV8"
+			]
+		}
+	},
+	"version": 1
+}
